@@ -1,0 +1,119 @@
+<style>
+.section .reveal .state-background {
+background: white;
+}
+.reveal h3 { 
+  font-size: 65px;
+  color: rgb(57, 64, 71)  ;
+}
+
+/* heading for slides with two hashes ## */
+.reveal .slides section .slideContent h2 {
+   font-family: Palatino Linotype;
+   font-size: 37px;;
+   color: rgb(57, 64, 71);
+}
+.section .reveal h1, .section .reveal h2, .section {
+font-family: Palatino Linotype;
+color: rgb(8, 38, 73);
+margin-top: 30px;
+text-align:center;
+}
+.reveal h3 { 
+  font-size: 65px;
+  color: rgb(57, 64, 71)  ;
+}
+.reveal pre code {
+	font-family: Palatino Linotype;
+  background-color: white;
+  color: blue;
+ 
+
+  }
+.section .reveal p {
+font-family: Palatino Linotype;
+color: rgb(57, 64, 71);
+text-align:right; width:100%;
+line-height: 0.1em;
+#margin-top: 70px;
+}
+</style>
+
+Capstone Project
+========================================================
+font-family: 'palatino linotype'
+transition: rotate
+
+                          NLP SwiftKey Word Prediction
+                          Coursera/Johns Hopkins University 
+                
+
+Venkatesh Attinti
+
+28-May-2020
+
+![caption](Logos/logo.jpg)
+
+
+Cleaning & Data Exploration
+========================================================
+font-family: 'palatino linotype'
+
+This project is developed based on 3 large text files from [Swiftkey Dataset] (https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip)
+
+        * en_US.blogs.txt
+        * en_US.news.txt
+        * en_US.twitter.txt
+
+Created a large corpus of data by merging all the 3 text files and was then analyzed after preprocessing the data. Preprocessing mainly involves
+
+        * Removing the extra spances
+        * Convert to lowercase
+        * Remove Profane Language, punctuation, numbers, etc. 
+
+N-grams (uni, bi, tri)  were extracted from the corpus and then model has been developed to predict the next word based on N-grams extracted
+
+The details of the preprocessing of sample data is provided here [Milestone] (https://rpubs.com/mlouricas/Milestone)
+
+Algorithm & Model Building
+========================================================
+font-family: 'palatino linotype'
+
+* N-gram model with back-off strategy was used for the Natural Language Process.  
+
+* These data were then tokenized 3 times using 1-gram to 3-gram calculations using RWeka package.
+
+* The algorithm predicts the next word based on the last 2 text inputs the user entered then starts to search using the 3-gram.  If the next word isn't predicted, it selects the 2-gram, then 1-gram.  If nothing is found it falls back to a "default" of the word most often seen
+
+<center>
+
+![PredictionPic](Logos/ngram.png)
+
+</center>
+
+Shiny App
+========================================================
+font-family: 'palatino linotype'
+
+- Provides a text input box for user to type a line of short text
+
+- Iterates from longest N-gram (3-gram) to shortest (1-gram)
+
+- Predicts using the longest, most frequent, matching N-gram
+
+- After multiple tests it was determined the most efficient method to keep up with performance expectations was to create only 1-gram,2-gram,3-gram model with the 20% of data from large corpus of data
+
+- Detects words typed and predicts the most likey word from the corpus within seconds.
+
+- Has three tabs - Prediction, About, and Help
+
+App and resources
+========================================================
+font-family: 'palatino linotype'
+- Average response time under 2-3 seconds
+
+- Application is running at: https://attinti.shinyapps.io/NLP_Nextword_Predicator/
+
+- Github link for various code files is here: https://github.com/attinti088/Capstone_project
+
+Code and app will be updated with any new features/improvements.
